@@ -23,7 +23,7 @@
 		var googleLatandLong = new google.maps.LatLng(latitude,longitude);
  
 		var mapOptions = { 
-			zoom: 10,
+			zoom: 11,
 			center: googleLatandLong,
 			mapTypeId: google.maps.MapTypeId.ROADMAP 
 		};
@@ -52,6 +52,12 @@
 		var latLong = new google.maps.LatLng(latitude,longitude);
 	} */
  
+	function addMyLocation(map){
+		var title = "Your current Location"; 
+		var googleLatandLong = new google.maps.LatLng(centerLat,centerLong);
+		addMarker(map, googleLatandLong, title, "");
+	}
+
 	function loadTweets(){
 		$.getJSON("${pageContext.request.contextPath}/twitter/getTweets",
 				"", 
@@ -89,6 +95,7 @@
 						
 						
 					}
+					addMyLocation(map);
 					$("#result").html(data)
 		 
 				})
@@ -102,9 +109,7 @@
 
 	function init(){
 		showMap(centerLat, centerLong);
-		var title = "Your current Location"; 
-		var googleLatandLong = new google.maps.LatLng(centerLat,centerLong);
-		addMarker(map, googleLatandLong, title, "");
+		addMyLocation(map);
 		
 		var intervalID = setInterval(loadTweets, 30000);
 	}
@@ -112,7 +117,7 @@
 	</head> 
 	<body onload="init()">
 		
-		<div id="map" style="width: 900px; height: 900px"></div>
+		<div id="map" style="width: 1200px; height: 900px"></div>
 
 	</body>
 </html>

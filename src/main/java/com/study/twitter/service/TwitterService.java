@@ -7,11 +7,14 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import twitter4j.GeoLocation;
 import twitter4j.Status;
 
+import com.study.twitter.constants.Constants;
 import com.study.twitter.search.TweetManager;
 import com.study.twitter.search.TweetObserver;
 import com.study.twitter.search.TweetPuller;
+import com.study.twitter.utils.Utils;
 
 @Service
 public class TwitterService {
@@ -19,11 +22,23 @@ public class TwitterService {
 	@Autowired
 	TweetManager tweetManager;
 	
+	@Autowired
+	LocationService locationService;
+	
 	TweetObserver tweetObserver;
 	
 	@PostConstruct
 	public void init(){
-		TweetPuller tweetPuller = new TweetPuller(tweetManager);
+
+		GeoLocation geoLocation = new GeoLocation(Constants.LATTITUDE, Constants.LONGITUED);
+		String ip = Utils.getMyIP();
+		if(ip != null){
+			GeoLocation location = locationService.getLocation(ip);
+			if(location != null){
+				geoLocation = location;
+			}
+		}
+		TweetPuller tweetPuller = new TweetPuller(tweetManager,geoLocation);
 		tweetObserver = new TweetObserver(tweetManager);
 		System.out.println("Starting tweetPuller.");
 		new Thread(tweetPuller).start();

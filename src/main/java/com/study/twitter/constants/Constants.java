@@ -23,5 +23,9 @@ public class Constants {
 	public static final String OAUTH_TOKEN_SECRET = "0KykKOHX4SAM09iNicumZ5PD8cuHmnyIYY5gpGjw0Q3mE";
 	
 	
+	
+	public static final double LATTITUDE = 28.5355;
+	public static final double LONGITUED = 77.391;
+	
 
 }

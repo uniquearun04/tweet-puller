@@ -18,11 +18,13 @@ import com.study.twitter.constants.Constants;
 public class TweetPuller implements Runnable {
 
 	private TweetManager tweetManger;
+	private GeoLocation geoLocation;
 	
 	private long sinceId = 0;
 	
-	public TweetPuller(TweetManager tweetManger) {
+	public TweetPuller(TweetManager tweetManger, GeoLocation geolocation) {
 		this.tweetManger = tweetManger;
+		this.geoLocation = geolocation;
 	}
 
 	
@@ -36,17 +38,12 @@ public class TweetPuller implements Runnable {
 		TwitterFactory factory = new TwitterFactory(configuration);
 		Twitter twitter = factory.getInstance();
 		
-//		Twitter twitter = TwitterFactory.getSingleton();
-
-//		twitter.setOAuthConsumer(Constants.CONSUMER_KEY, Constants.CONSUMER_SECRET);
 		AccessToken accessToken = null;
 		accessToken = new AccessToken(Constants.OAUTH_TOKEN, Constants.OAUTH_TOKEN_SECRET, Long.parseLong(Constants.OWNER_ID));
 		twitter.setOAuthAccessToken(accessToken);
-		GeoLocation myLocation  = new GeoLocation(28.5355, 77.391);//Noida
-		
 		
 		Query query = new Query();
-		query.setGeoCode(myLocation, 100, Query.MILES);
+		query.setGeoCode(geoLocation, 100, Query.MILES);
 		query.count(100);
 
 		while(!Thread.currentThread().interrupted()){
