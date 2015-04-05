@@ -115,9 +115,24 @@
 	}
   </script>
 	</head> 
-	<body onload="init()">
+	<body onload="init();getLocation()">
 		
 		<div id="map" style="width: 1200px; height: 900px"></div>
 
+<script>
+
+ function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+    	console.log("Geolocation is not supported by this browser.");
+    }
+}
+function showPosition(position) {
+	console.log("Latitude: " + position.coords.latitude +
+		    "\tLongitude: " + position.coords.longitude);
+}
+</script>
 	</body>
+	
 </html>
