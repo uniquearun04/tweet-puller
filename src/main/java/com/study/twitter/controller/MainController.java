@@ -2,6 +2,7 @@ package com.study.twitter.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ import com.study.twitter.service.TwitterService;
 @Controller
 @RequestMapping("/twitter")
 public class MainController {
+	
+	private static final Logger logger = Logger.getLogger(MainController.class);
+
 
 	@Autowired
 	TwitterService twitterService;
@@ -43,7 +47,7 @@ public class MainController {
 			result = mapper.writeValueAsString(tweets);
 		} catch (Exception e) {
 
-			e.printStackTrace();
+			logger.error("Exception: "+e, e);
 		}
 
 		return result;

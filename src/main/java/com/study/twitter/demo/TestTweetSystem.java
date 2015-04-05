@@ -6,6 +6,7 @@ import com.study.twitter.constants.Constants;
 import com.study.twitter.search.TweetManager;
 import com.study.twitter.search.TweetObserver;
 import com.study.twitter.search.TweetPuller;
+import com.study.twitter.service.LocationService;
 
 public class TestTweetSystem {
 
@@ -17,10 +18,12 @@ public class TestTweetSystem {
 		TweetObserver tweetObserver = new TweetObserver(tweetManager);
 		
 		System.out.println("Starting test.");
-		new Thread(tweetPuller).start();
+//		new Thread(tweetPuller).start();
 		
+		LocationService locService = new LocationService();
 		
-		
+		GeoLocation location = locService.getLocation("10.219.237.53");
+		System.out.println(location);
 	}
 
 }

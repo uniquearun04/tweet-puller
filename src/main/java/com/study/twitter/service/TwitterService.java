@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +28,12 @@ public class TwitterService {
 	
 	TweetObserver tweetObserver;
 	
+	private static final Logger logger = Logger.getLogger(TwitterService.class);
+
 	@PostConstruct
 	public void init(){
 
+		
 		GeoLocation geoLocation = new GeoLocation(Constants.LATTITUDE, Constants.LONGITUED);
 		String ip = Utils.getMyIP();
 		if(ip != null){
@@ -40,7 +44,7 @@ public class TwitterService {
 		}
 		TweetPuller tweetPuller = new TweetPuller(tweetManager,geoLocation);
 		tweetObserver = new TweetObserver(tweetManager);
-		System.out.println("Starting tweetPuller.");
+		logger.info("Starting tweetPuller.");
 		new Thread(tweetPuller).start();
 	}
 	

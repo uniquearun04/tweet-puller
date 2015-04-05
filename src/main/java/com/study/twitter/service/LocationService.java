@@ -3,6 +3,7 @@ package com.study.twitter.service;
 import java.io.IOException;
 import java.net.URL;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import twitter4j.GeoLocation;
@@ -13,6 +14,8 @@ import com.maxmind.geoip.LookupService;
 
 @Service
 public class LocationService {
+
+	private static final Logger logger = Logger.getLogger(LocationService.class);
 
 	public GeoLocation getLocation(String ipAddress) {
 
@@ -29,7 +32,7 @@ public class LocationService {
 		URL url = getClass().getClassLoader().getResource(locationDataFile);
 
 		if (url == null) {
-			System.err.println("location database is not found - "
+			logger.error("location database is not found - "
 					+ locationDataFile);
 		} else {
 
@@ -43,11 +46,8 @@ public class LocationService {
 						.valueOf(locationServices.latitude)), Double.parseDouble(String
 						.valueOf(locationServices.longitude)));
 			} catch (IOException e) {
-
-				System.err.println(e.getMessage());
-
+				logger.error(e.getMessage(),e);
 			}
-
 		}
 
 		return geoLocation;

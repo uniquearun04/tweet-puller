@@ -4,10 +4,14 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import twitter4j.Status;
 
 //@Component
 public class TweetObserver implements Observer {
+
+	private static final Logger logger = Logger.getLogger(TweetObserver.class);
 
 	public LinkedList<Status> getTweetList() {
 		return tweetList;
@@ -56,7 +60,7 @@ public class TweetObserver implements Observer {
 	
 	private void printTweets(){
 		for(Status status : tweetList){
-			System.out.println(status.getId()+", "+status.getText()+", "+status.getUser());
+			logger.info(status.getId()+", "+status.getText()+", "+status.getUser());
 		}
 	}
 }

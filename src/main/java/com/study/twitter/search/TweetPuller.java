@@ -2,6 +2,8 @@ package com.study.twitter.search;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import twitter4j.GeoLocation;
 import twitter4j.Query;
 import twitter4j.QueryResult;
@@ -22,6 +24,8 @@ public class TweetPuller implements Runnable {
 	
 	private long sinceId = 0;
 	
+	private static final Logger logger = Logger.getLogger(TweetPuller.class);
+
 	public TweetPuller(TweetManager tweetManger, GeoLocation geolocation) {
 		this.tweetManger = tweetManger;
 		this.geoLocation = geolocation;
@@ -51,7 +55,7 @@ public class TweetPuller implements Runnable {
 			query.setSinceId(sinceId);
 			QueryResult result =  null;
 			try {
-				System.out.println("Pulling tweets since id: "+sinceId);
+				logger.info("Pulling tweets since id: "+sinceId);
 				result = twitter.search(query);
 				List <Status> tweets = result.getTweets();
 				
@@ -65,11 +69,11 @@ public class TweetPuller implements Runnable {
 				try {
 					Thread.sleep(1000 * 60 * 3);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					logger.error("InterruptedException: "+e, e);
 				}
 				
 			} catch (TwitterException e) {
-				e.printStackTrace();
+				logger.error("TwitterException: "+e, e);
 			}
 		}
 	    
