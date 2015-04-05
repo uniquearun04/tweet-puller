@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Welcome</title>
+		<title>Tweets Near by you</title>
 
 		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -23,7 +23,7 @@
 		var googleLatandLong = new google.maps.LatLng(latitude,longitude);
  
 		var mapOptions = { 
-			zoom: 9,
+			zoom: 10,
 			center: googleLatandLong,
 			mapTypeId: google.maps.MapTypeId.ROADMAP 
 		};
@@ -112,7 +112,7 @@
 	</head> 
 	<body onload="init()">
 		
-		<div id="map" style="width: 800px; height: 800px"></div>
+		<div id="map" style="width: 900px; height: 900px"></div>
 
 	</body>
 </html>
