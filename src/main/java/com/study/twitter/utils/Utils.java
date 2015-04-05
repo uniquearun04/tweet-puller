@@ -1,5 +1,11 @@
 package com.study.twitter.utils;
 
+/**
+ * @author Arun.Chaudhary
+ * This code should be used by others with consent of the author.
+ * 
+ * This class defines utility methods.
+ */
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;

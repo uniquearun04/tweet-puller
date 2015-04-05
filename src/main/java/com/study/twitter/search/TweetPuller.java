@@ -1,5 +1,11 @@
 package com.study.twitter.search;
 
+/**
+ * @author Arun.Chaudhary
+ * This code should be used by others with consent of the author.
+ * 
+ * This class pulls tweets from twitter.
+ */
 import java.util.List;
 
 import org.apache.log4j.Logger;

@@ -1,5 +1,11 @@
 package com.study.twitter.search;
 
+/**
+ * @author Arun.Chaudhary
+ * This code should be used by others with consent of the author.
+ * 
+ * This class maintains the current tweets with geolocation property, which are used to draw on the map.
+ */
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;

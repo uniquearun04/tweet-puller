@@ -1,5 +1,12 @@
 package com.study.twitter.demo;
 
+/**
+ * @author Arun.Chaudhary
+ * This code should be used by others with consent of the author.
+ * 
+ * This class is used for personal testing only.
+ */
+
 import twitter4j.GeoLocation;
 
 import com.study.twitter.constants.Constants;

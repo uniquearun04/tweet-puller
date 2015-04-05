@@ -1,5 +1,12 @@
 package com.study.twitter.controller;
 
+/**
+ * @author Arun.Chaudhary
+ * This code should be used by others with consent of the author.
+ * 
+ * This class is the main controller.
+ */
+
 import java.util.List;
 
 import org.apache.log4j.Logger;

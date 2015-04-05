@@ -119,5 +119,21 @@
 		
 		<div id="map" style="width: 1200px; height: 900px"></div>
 
+<script>
+/* var x = document.getElementById("demo");
+ */
+ function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+    	console.log("Geolocation is not supported by this browser.");
+    }
+}
+function showPosition(position) {
+	console.log("Latitude: " + position.coords.latitude +
+		    "<\t>Longitude: " + position.coords.longitude);
+}
+</script>
 	</body>
+	
 </html>

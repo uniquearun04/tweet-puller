@@ -1,5 +1,11 @@
 package com.study.twitter.search;
 
+/**
+ * @author Arun.Chaudhary
+ * This code should be used by others with consent of the author.
+ * 
+ * This class manages the tweets.
+ */
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

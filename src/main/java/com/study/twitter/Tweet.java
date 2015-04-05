@@ -1,5 +1,11 @@
 package com.study.twitter;
 
+/**
+ * @author Arun.Chaudhary
+ * This code should be used by others with consent of the author.
+ * 
+ * This class is a simple pojo, to be used later. 
+ */
 import twitter4j.GeoLocation;
 
 public class Tweet {

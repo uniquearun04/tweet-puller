@@ -1,5 +1,11 @@
 package com.study.twitter.service;
 
+/**
+ * @author Arun.Chaudhary
+ * This code should be used by others with consent of the author.
+ * 
+ * This class starts the tweetpuller thread and provides method to get current tweets.
+ */
 import java.util.List;
 
 import javax.annotation.PostConstruct;

@@ -1,5 +1,11 @@
 package com.study.twitter.service;
 
+/**
+ * @author Arun.Chaudhary
+ * This code should be used by others with consent of the author.
+ * 
+ * This class gives methods to find geolocation of the current machine.
+ */
 import java.io.IOException;
 import java.net.URL;
 
